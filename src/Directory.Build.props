@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup>
+    <Product>andymac4182.Reference</Product>
+    <Description>andymac4182.Reference</Description>
+    <Company>andymac4182</Company>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <LangVersion>latest</LangVersion>
+    <Version Condition="'$(Version)' == ''">1.0.0+aaaaa</Version>
+    <RuntimeIdentifiers>win10-x64;linux-x64</RuntimeIdentifiers>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591;NU5105</NoWarn>
+    <Nullable>enable</Nullable>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
+    <PublishDir>../../artifacts/publish/$(MSBuildProjectName)/</PublishDir>
+    <DefaultWebContentItemExcludes>$(DefaultWebContentItemExcludes);**\packages.lock.json</DefaultWebContentItemExcludes>
+  </PropertyGroup>
+</Project>

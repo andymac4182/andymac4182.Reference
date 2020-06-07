@@ -1,0 +1,1 @@
+This folder is for scripts that are used as part of upgrading the database like table changes

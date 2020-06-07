@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <IsPublishable>false</IsPublishable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Best.Conventional" Version="8.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.2" />
+    <PackageReference Include="coverlet.collector" Version="1.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\andymac4182.Reference.DbUp\andymac4182.Reference.DbUp.csproj" />
+    <ProjectReference Include="..\andymac4182.Reference.MessageContracts\andymac4182.Reference.MessageContracts.csproj" />
+    <ProjectReference Include="..\andymac4182.Reference.Service\andymac4182.Reference.Service.csproj" />
+    <ProjectReference Include="..\andymac4182.Reference.Web\andymac4182.Reference.Web.csproj" />
+    <ProjectReference Include="..\andymac4182.Reference\andymac4182.Reference.csproj" />
+  </ItemGroup>
+
+</Project>

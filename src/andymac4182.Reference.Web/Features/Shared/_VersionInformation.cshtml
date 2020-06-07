@@ -1,0 +1,8 @@
+@using andymac4182.Reference.Web
+@inject Microsoft.Extensions.Hosting.IHostEnvironment  HostingEnvironment
+
+@{
+    var assemblyName = Constants.WebAssembly.GetName().Name;
+    var assemblyVersion = Constants.WebAssembly.GetName().Version;
+}
+<!-- @assemblyName | @assemblyVersion | @HostingEnvironment.EnvironmentName | @Environment.MachineName -->

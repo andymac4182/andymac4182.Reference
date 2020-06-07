@@ -1,0 +1,1 @@
+This folder is for use of scripts that should be run on every deploy. Eg Views and Stored Procedures 
