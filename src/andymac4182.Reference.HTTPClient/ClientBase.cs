@@ -1,3 +1,8 @@
+using System;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+
 namespace andymac4182.Reference.HTTPClient
 {
     internal abstract class ClientBase
