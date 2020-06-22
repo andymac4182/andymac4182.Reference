@@ -1,20 +1,10 @@
 #!/usr/bin/env pwsh
 $configuration = "Release"
-$BuildId = "0"
-$IsBuildEnv = $false
-$CommitSha = 'LOCAL'
 $Env:DOTNET_CLI_TELEMETRY_OPTOUT = 'true'
 
-if (Test-Path Env:BUILD_BUILDID)
+if (!(Test-Path Env:version))
 {
-    $BuildId = $Env:BUILD_BUILDID
-    $IsBuildEnv = $true
-}
-
-if (Test-Path Env:GITHUB_RUN_NUMBER)
-{
-    $BuildId = $Env:GITHUB_RUN_NUMBER
-    $IsBuildEnv = $true
+    $Env:version = "0.0.0.0+LOCAL"
 }
 
 Remove-Item -Recurse -Force artifacts -ErrorAction SilentlyContinue
@@ -24,20 +14,6 @@ Get-ChildItem .\ -include bin,obj -Recurse | ForEach-Object ($_) { Remove-Item $
 Set-Location src
 
 dotnet tool restore
-dotnet dotnet-gitversion /nofetch
-
-$gitVersion = (dotnet dotnet-gitversion /nofetch) | Out-String | ConvertFrom-Json -AsHashtable
-
-if($IsBuildEnv)
-{
-    $CommitSha = $gitVersion["ShortSha"]
-}
-
-$Version = "$($gitVersion["SemVer"]).$BuildId+$CommitSha"
-$Env:Version = $Version
-
-Write-Output "Build version: $Version"
-Write-Output "##vso[build.updatebuildnumber]$Version"
 
 $numOfCsprojFiles = Get-ChildItem -Include *.sln -Recurse | Measure-Object
 
@@ -63,17 +39,3 @@ foreach ($packageJsonFile in $packageJsonFiles)
 }
 
 Set-Location ..
-
-if (Test-Path "artifacts/publish")
-{
-    $dir = Get-ChildItem "artifacts/publish" | ?{$_.PSISContainer}
-
-    foreach ($d in $dir){
-        dotnet dotnet-octo pack --id $d.Name --basePath $d.FullName --version $Env:Version --outFolder="artifacts/octo-nupkg"
-
-        if($IsBuildEnv)
-        {
-            #dotnet dotnet-octo push --package "artifacts/octo-nupkg/$( $d.Name ).$( $Env:Version ).nupkg"
-        }
-    }
-}
