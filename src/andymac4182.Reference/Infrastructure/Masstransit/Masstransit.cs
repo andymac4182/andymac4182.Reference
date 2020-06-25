@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 using GreenPipes;
 using MassTransit;
+using MassTransit.ActiveMqTransport;
 using MassTransit.Azure.ServiceBus.Core;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,27 +26,24 @@ namespace andymac4182.Reference.Infrastructure.Masstransit
 
                         r.AddBus(context =>
                         {
-                            var busControl = Bus.Factory.CreateUsingAzureServiceBus(x =>
-                            {
-                                var serviceUri = context.Container.GetService<AzureServiceBusConnectionStringSetting>().Value;
+                            IBusControl busControl;
 
-                                x.Host(serviceUri);
-
-                                if (!registerReceiveEndpoints) return;
-                                
-                                var queueName = consumerAssembly.GetName().Name;
-
-                                x.ReceiveEndpoint(queueName, cc =>
-                                {
-                                    cc.MaxConcurrentCalls = 1;
-                                    cc.ConfigureConsumers(context);
-                                    cc.ConfigureDeadLetterQueueDeadLetterTransport();
-                                    cc.ConfigureDeadLetterQueueErrorTransport();
-                                    cc.UseRetry(x => x.Intervals(RetryIntervals()));
-                                });
-                            });
-                            
                             var logger = context.Container.GetService<Serilog.ILogger>();
+                            var messageBusSetting = context.Container.GetService<MessageBusSetting>();
+
+                            switch (messageBusSetting.Value)
+                            {
+                                case MessageBusSetting.MessageBusTransports.AzureServiceBus:
+                                    busControl = CreateUsingAzureServiceBus(consumerAssembly, registerReceiveEndpoints, context);
+                                    break;
+                                case MessageBusSetting.MessageBusTransports.ActiveMQ:
+                                    busControl = CreateUsingActiveMQ(consumerAssembly, registerReceiveEndpoints, context);
+                                    break;
+                                default:
+                                    logger.Warning("No message bus transport selected");
+                                    return default;
+                            }
+
                             logger
                                 .ForContext("ProbeResult", JsonConvert.SerializeObject(busControl.GetProbeResult(), Formatting.Indented))
                                 .Information("Masstransit diagnostic information");
@@ -59,7 +57,59 @@ namespace andymac4182.Reference.Infrastructure.Masstransit
 
             return serviceCollection;
         }
-        
+
+        private static IBusControl CreateUsingAzureServiceBus(Assembly consumerAssembly, bool registerReceiveEndpoints,
+            IRegistrationContext<IServiceProvider> context)
+        {
+            IBusControl busControl;
+            busControl = Bus.Factory.CreateUsingAzureServiceBus(x =>
+            {
+                var serviceUri = context.Container
+                    .GetService<AzureServiceBusConnectionStringSetting>().Value;
+
+                x.Host(serviceUri);
+
+                if (!registerReceiveEndpoints) return;
+
+                var queueName = consumerAssembly.GetName().Name;
+
+                x.ReceiveEndpoint(queueName, cc =>
+                {
+                    cc.MaxConcurrentCalls = 1;
+                    cc.ConfigureConsumers(context);
+                    cc.ConfigureDeadLetterQueueDeadLetterTransport();
+                    cc.ConfigureDeadLetterQueueErrorTransport();
+                    cc.UseRetry(x => x.Intervals(RetryIntervals()));
+                });
+            });
+            return busControl;
+        }
+
+        private static IBusControl CreateUsingActiveMQ(Assembly consumerAssembly, bool registerReceiveEndpoints,
+            IRegistrationContext<IServiceProvider> context)
+        {
+            IBusControl busControl;
+            busControl = Bus.Factory.CreateUsingActiveMq(x =>
+            {
+                x.Host("localhost", configurator =>
+                {
+                    configurator.Username("admin");
+                    configurator.Password("admin");
+                });
+
+                if (!registerReceiveEndpoints) return;
+
+                var queueName = consumerAssembly.GetName().Name.Replace(".", "__");
+
+                x.ReceiveEndpoint(queueName, cc =>
+                {
+                    cc.ConfigureConsumers(context);
+                    cc.UseRetry(x => x.Intervals(RetryIntervals()));
+                });
+            });
+            return busControl;
+        }
+
         private static TimeSpan[] RetryIntervals()
         {
             // [200ms, 400ms, 800ms, 1,600ms, 3,200ms]
