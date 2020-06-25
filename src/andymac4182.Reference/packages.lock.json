@@ -32,6 +32,17 @@
         "resolved": "2020.1.0",
         "contentHash": "kD9D2ey3DGeLbfIzS8PkwLFkcF5vCOLk2rdjgfSxTfpoyovl7gAyoS6yq6T77zo9QgJGaVJ7PO/cSgLopnKlzg=="
       },
+      "MassTransit.ActiveMQ": {
+        "type": "Direct",
+        "requested": "[6.3.2, )",
+        "resolved": "6.3.2",
+        "contentHash": "oft3eO+zHp/Vcaysf168Nf5rfrSgx6tnT2Xk5XkF6CFWvSUN8H51R5uptdYbsQ5Ibo+v2Cnkmeb/gWClc7xpNQ==",
+        "dependencies": {
+          "Apache.NMS.ActiveMQ.NetStd": "1.7.2.4115",
+          "Apache.NMS.NetStd": "1.7.1.3899",
+          "MassTransit": "6.3.2"
+        }
+      },
       "MassTransit.Azure.ServiceBus.Core": {
         "type": "Direct",
         "requested": "[6.3.2, )",
@@ -92,9 +103,9 @@
       },
       "NimbleConfig.Core": {
         "type": "Direct",
-        "requested": "[1.0.27, )",
-        "resolved": "1.0.27",
-        "contentHash": "Bk7Hdkou+kIiD/1cTIprxpwrLLYsuicLELNZXN2l8ma8Ptwktb2BRPUtmnPuaUAY84bCR2hVvkYpYb3SI6ilxg==",
+        "requested": "[1.0.29, )",
+        "resolved": "1.0.29",
+        "contentHash": "Pl0SKReoaUxqDjJudZbHZ0ti0biUN+1/OmUCyYEuTjGaSsm1KJ9+kE2rtTJ89Q9C1/xiMz1wAfsIJJ9uCp1bdQ==",
         "dependencies": {
           "Microsoft.CSharp": "4.5.0",
           "Microsoft.Extensions.Configuration": "2.0.0",
@@ -103,12 +114,12 @@
       },
       "NimbleConfig.DependencyInjection.Aspnetcore": {
         "type": "Direct",
-        "requested": "[1.0.27, )",
-        "resolved": "1.0.27",
-        "contentHash": "mToV/IHF1ORhnUKyKI03JOAbGMgUla7eoZtxU+ZvA9pSDMYBWC/sM/DUhJkPcQEhnyB1BZSVvuu1L36RlLNsXg==",
+        "requested": "[1.0.29, )",
+        "resolved": "1.0.29",
+        "contentHash": "GvMomZvtlyqJkxll/0KMYfY5mrCjDeaLrSRdw7mMbgqf07YCu8pbSYAQxWeKEk9m2XBXHy7+14iBGqLUUrDZSw==",
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "2.0.0",
-          "NimbleConfig.Core": "1.0.27"
+          "NimbleConfig.Core": "1.0.29"
         }
       },
       "NodaTime": {
@@ -220,6 +231,20 @@
         "resolved": "0.15.0",
         "contentHash": "sVpwfls4MfNnwIXLSGCgaUnV+c9kgJ8ia6GsyRcpd4Vs3gLogSDtSYBYrre2K2u/PNMo8GgG09RehwVnze70Tw=="
       },
+      "Apache.NMS.ActiveMQ.NetStd": {
+        "type": "Transitive",
+        "resolved": "1.7.2.4115",
+        "contentHash": "sIxT3JElzY/D8BR+4rR8yGQeK9fh9FRhGmgXHo24PgldAhfZ5QV3fbCZ0IDMGDPq3cysar+Ow6tg3HIaEhQOww==",
+        "dependencies": {
+          "Apache.NMS.NetStd": "1.7.1.3899",
+          "Ionic.Zlib.Core": "1.0.0"
+        }
+      },
+      "Apache.NMS.NetStd": {
+        "type": "Transitive",
+        "resolved": "1.7.1.3899",
+        "contentHash": "yrB3FTZirlVj1Ty/p5KVCK48UAgjPaoZyuGrqMKPWQLMHtttuWplFs9DubiJ90GH4JDhVY2D/2AqVlyNBziyIg=="
+      },
       "Automatonymous": {
         "type": "Transitive",
         "resolved": "4.2.1",
@@ -281,6 +306,11 @@
           "Insight.Database.Core": "6.3.0",
           "Microsoft.Data.SqlClient": "1.1.0"
         }
+      },
+      "Ionic.Zlib.Core": {
+        "type": "Transitive",
+        "resolved": "1.0.0",
+        "contentHash": "3GBgjMQA/uPTiqv+wMCpLsyK5dcHCF6EV8+pg4IMKLbgbMGEtIkvErEO4ql5Cv18n94Smf3NAhY/sCed2Tb+Tw=="
       },
       "MassTransit": {
         "type": "Transitive",

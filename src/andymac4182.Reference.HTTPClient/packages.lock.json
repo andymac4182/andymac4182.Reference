@@ -19,9 +19,9 @@
       },
       "NSwag.MSBuild": {
         "type": "Direct",
-        "requested": "[13.6.0, )",
-        "resolved": "13.6.0",
-        "contentHash": "BCo5JZd4Z47DKH4utoQsTGAylkBOBTln+E9KxGW/20tRLILBRI/nu9H5oTuPRACKBxqRnCoz0Q5BMt6fOXAifA=="
+        "requested": "[13.6.1, )",
+        "resolved": "13.6.1",
+        "contentHash": "5wemwPCFFbNZ+EdRAAU8aeq3CIl6rEGJHz+d/MNGNlJTfu5ZGXzp6Vp684gw2uvrf55CM7QV4NEPYgUusOBmIg=="
       },
       "Microsoft.NETCore.Platforms": {
         "type": "Transitive",

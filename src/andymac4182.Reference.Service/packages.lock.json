@@ -49,6 +49,20 @@
           "Microsoft.Extensions.Options": "3.1.4"
         }
       },
+      "Apache.NMS.ActiveMQ.NetStd": {
+        "type": "Transitive",
+        "resolved": "1.7.2.4115",
+        "contentHash": "sIxT3JElzY/D8BR+4rR8yGQeK9fh9FRhGmgXHo24PgldAhfZ5QV3fbCZ0IDMGDPq3cysar+Ow6tg3HIaEhQOww==",
+        "dependencies": {
+          "Apache.NMS.NetStd": "1.7.1.3899",
+          "Ionic.Zlib.Core": "1.0.0"
+        }
+      },
+      "Apache.NMS.NetStd": {
+        "type": "Transitive",
+        "resolved": "1.7.1.3899",
+        "contentHash": "yrB3FTZirlVj1Ty/p5KVCK48UAgjPaoZyuGrqMKPWQLMHtttuWplFs9DubiJ90GH4JDhVY2D/2AqVlyNBziyIg=="
+      },
       "Automatonymous": {
         "type": "Transitive",
         "resolved": "4.2.1",
@@ -133,6 +147,11 @@
           "Microsoft.Data.SqlClient": "1.1.0"
         }
       },
+      "Ionic.Zlib.Core": {
+        "type": "Transitive",
+        "resolved": "1.0.0",
+        "contentHash": "3GBgjMQA/uPTiqv+wMCpLsyK5dcHCF6EV8+pg4IMKLbgbMGEtIkvErEO4ql5Cv18n94Smf3NAhY/sCed2Tb+Tw=="
+      },
       "JetBrains.Annotations": {
         "type": "Transitive",
         "resolved": "2020.1.0",
@@ -156,6 +175,16 @@
           "System.Threading.ThreadPool": "4.3.0",
           "System.ValueTuple": "4.5.0",
           "System.Xml.ReaderWriter": "4.3.1"
+        }
+      },
+      "MassTransit.ActiveMQ": {
+        "type": "Transitive",
+        "resolved": "6.3.2",
+        "contentHash": "oft3eO+zHp/Vcaysf168Nf5rfrSgx6tnT2Xk5XkF6CFWvSUN8H51R5uptdYbsQ5Ibo+v2Cnkmeb/gWClc7xpNQ==",
+        "dependencies": {
+          "Apache.NMS.ActiveMQ.NetStd": "1.7.2.4115",
+          "Apache.NMS.NetStd": "1.7.1.3899",
+          "MassTransit": "6.3.2"
         }
       },
       "MassTransit.Azure.ServiceBus.Core": {
@@ -862,8 +891,8 @@
       },
       "NimbleConfig.Core": {
         "type": "Transitive",
-        "resolved": "1.0.27",
-        "contentHash": "Bk7Hdkou+kIiD/1cTIprxpwrLLYsuicLELNZXN2l8ma8Ptwktb2BRPUtmnPuaUAY84bCR2hVvkYpYb3SI6ilxg==",
+        "resolved": "1.0.29",
+        "contentHash": "Pl0SKReoaUxqDjJudZbHZ0ti0biUN+1/OmUCyYEuTjGaSsm1KJ9+kE2rtTJ89Q9C1/xiMz1wAfsIJJ9uCp1bdQ==",
         "dependencies": {
           "Microsoft.CSharp": "4.5.0",
           "Microsoft.Extensions.Configuration": "2.0.0",
@@ -872,11 +901,11 @@
       },
       "NimbleConfig.DependencyInjection.Aspnetcore": {
         "type": "Transitive",
-        "resolved": "1.0.27",
-        "contentHash": "mToV/IHF1ORhnUKyKI03JOAbGMgUla7eoZtxU+ZvA9pSDMYBWC/sM/DUhJkPcQEhnyB1BZSVvuu1L36RlLNsXg==",
+        "resolved": "1.0.29",
+        "contentHash": "GvMomZvtlyqJkxll/0KMYfY5mrCjDeaLrSRdw7mMbgqf07YCu8pbSYAQxWeKEk9m2XBXHy7+14iBGqLUUrDZSw==",
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "2.0.0",
-          "NimbleConfig.Core": "1.0.27"
+          "NimbleConfig.Core": "1.0.29"
         }
       },
       "NodaTime": {
@@ -2424,12 +2453,13 @@
           "CorrelationId": "3.0.0",
           "Insight.Database": "6.3.0",
           "JetBrains.Annotations": "2020.1.0",
+          "MassTransit.ActiveMQ": "6.3.2",
           "MassTransit.Azure.ServiceBus.Core": "6.3.2",
           "MassTransit.Extensions.DependencyInjection": "6.3.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.4",
           "Microsoft.Extensions.Hosting.Abstractions": "3.1.5",
-          "NimbleConfig.Core": "1.0.27",
-          "NimbleConfig.DependencyInjection.Aspnetcore": "1.0.27",
+          "NimbleConfig.Core": "1.0.29",
+          "NimbleConfig.DependencyInjection.Aspnetcore": "1.0.29",
           "NodaTime": "3.0.0",
           "Serilog": "2.10.0-dev-01187",
           "Serilog.AspNetCore": "3.4.0-dev-00171",
