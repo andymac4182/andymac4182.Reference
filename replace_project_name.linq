@@ -1,4 +1,6 @@
-<Query Kind="Program" />
+<Query Kind="Program">
+  <NuGetReference>Proc</NuGetReference>
+</Query>
 
 void Main()
 {
@@ -15,7 +17,8 @@ void Main()
 	ReplaceContents(currentDirectory, replacements);
 	ReplaceFileNames(currentDirectory, replacements);
 	ReplaceDirectoryNames(currentDirectory, replacements);
-
+	RunDotnetRestore(currentDirectory);
+	
 	Util.Highlight("DONE").Dump();
 }
 
@@ -72,6 +75,15 @@ void ReplaceDirectoryNames(string baseDirectory, Dictionary<string, string> repl
 			Directory.Move(directory, Path.Combine(Directory.GetParent(directory).ToString(), newName));
 		}
 	}
+}
+
+void RunDotnetRestore(string baseDirectory)
+{
+	var execArguments = new ProcNet.ExecArguments("dotnet", "restore")
+	{
+		WorkingDirectory = Path.Combine(baseDirectory, "src")
+	};
+	ProcNet.Proc.Exec(execArguments);
 }
 
 public static class Extensions
