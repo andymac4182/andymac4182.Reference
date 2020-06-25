@@ -4,35 +4,22 @@ trigger:
     - release/*
     - hotfix/*
     - develop
+    - master
 
 pool:
   name: Azure Pipelines
-  vmImage: windows-latest
+  vmImage: ubuntu-latest
 
 stages:
 - stage: Build
   jobs:
   - job: Build
-    variables:
-      NUGET_PACKAGES: $(Pipeline.Workspace)/.nuget/packages
     steps: 
-    - task: UseDotNet@2
-      displayName: 'Install .NET Core SDK'
-      inputs:
-        version: '3.x'
-        performMultiLevelLookup: true
-    - task: Cache@2
-      inputs:
-        key: 'nuget | "$(Agent.OS)" | **/packages.lock.json,!**/bin/**'
-        restoreKeys: |
-            nuget | "$(Agent.OS)"
-        path: $(NUGET_PACKAGES)
-      displayName: Cache NuGet packages
     - task: PowerShell@2
       displayName: Build Script
       inputs:
         targetType: 'filePath'
-        filePath: 'build.ps1'
+        filePath: 'build-docker-containers.ps1'
         pwsh: true
     - task: PublishTestResults@2
       displayName: Publish test results
