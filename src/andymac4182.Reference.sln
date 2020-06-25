@@ -17,6 +17,7 @@ ProjectSection(SolutionItems) = preProject
 	Directory.Build.props = Directory.Build.props
 	..\clean.ps1 = ..\clean.ps1
 	..\build-docker-containers.ps1 = ..\build-docker-containers.ps1
+	..\Dockerfile.build = ..\Dockerfile.build
 EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{4D8604BC-F996-442C-8A17-B3A7CE689111}"

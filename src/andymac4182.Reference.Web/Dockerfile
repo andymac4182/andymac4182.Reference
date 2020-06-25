@@ -3,6 +3,7 @@ ARG version
 ENV version=$version
 WORKDIR /app
 COPY . ./
+RUN chmod +x ./build.ps1
 RUN ./build.ps1
 
 # Build runtime image

@@ -39,12 +39,6 @@ Write-Output "##vso[build.updatebuildnumber]$Version"
 
 $DockerVersion = $Version -replace "\+","-"
 
-docker build -f Dockerfile.build -t "app-build:$DockerVersion" .
-docker run --name buildoutput -d "app-build:$DockerVersion"
-docker cp buildoutput:app/artifacts ./artifacts
-docker stop buildoutput
-docker rm buildoutput
-
 $dockerFiles = Get-ChildItem ./src/* -Include Dockerfile -Recurse -Depth 2
 foreach ($dockerFile in $dockerFiles)
 {
@@ -53,3 +47,9 @@ foreach ($dockerFile in $dockerFiles)
     Write-Host "Running docker build for $applicationName. The Dockerfile is located at $dockerFile"
     docker build --build-arg version --file $dockerFile -t "$($applicationName):$DockerVersion" .
 }
+
+docker build --build-arg version -f Dockerfile.build -t "app-build:$DockerVersion" .
+docker run --name buildoutput -d "app-build:$DockerVersion"
+docker cp buildoutput:app/artifacts ./artifacts
+docker stop buildoutput
+docker rm buildoutput
