@@ -28,7 +28,7 @@ namespace andymac4182.Reference.Web
                 .AddCustomCorrelationId()
                 .AddCustomMasstransit(_thisAssembly, false)
                 .AddCustomSwagger()
-                .AddCustomConfigurationSettings()
+                .AddCustomConfigurationSettings(Constants.WebAssembly)
                 .AddMvc(options =>
                 {
                     options.Filters.Add<HandleAjaxExceptionsFilter>();

@@ -3184,6 +3184,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.4",
           "Microsoft.Extensions.Hosting.Abstractions": "3.1.5",
           "NimbleConfig.Core": "1.0.27",
+          "NimbleConfig.DependencyInjection.Aspnetcore": "1.0.27",
           "NodaTime": "3.0.0",
           "Serilog": "2.10.0-dev-01187",
           "Serilog.AspNetCore": "3.4.0-dev-00171",
@@ -3214,7 +3215,6 @@
           "Microsoft.Azure.WebJobs.Extensions": "3.0.6",
           "Microsoft.Extensions.DependencyInjection": "3.1.4",
           "Microsoft.Extensions.Http": "3.1.4",
-          "NimbleConfig.DependencyInjection.Aspnetcore": "1.0.27",
           "andymac4182.Reference": "1.0.0"
         }
       },
@@ -3229,7 +3229,6 @@
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "3.1.4",
           "NSwag.AspNetCore": "13.6.0",
           "NetEscapades.AspNetCore.SecurityHeaders": "0.11.0",
-          "NimbleConfig.DependencyInjection.Aspnetcore": "1.0.27",
           "OdeToCode.AddFeatureFolders": "2.0.3",
           "andymac4182.Reference": "1.0.0"
         }

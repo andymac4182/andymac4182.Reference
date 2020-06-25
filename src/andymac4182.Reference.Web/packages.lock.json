@@ -69,16 +69,6 @@
         "resolved": "0.11.0",
         "contentHash": "vn50cA5XTx0eM0P7Q/IU6mXrE05k13trkr1DiFZhBrvaN4qXAsunx6coZLDyai5kONyFX5wRDBvfSdxjAIu0rA=="
       },
-      "NimbleConfig.DependencyInjection.Aspnetcore": {
-        "type": "Direct",
-        "requested": "[1.0.27, )",
-        "resolved": "1.0.27",
-        "contentHash": "mToV/IHF1ORhnUKyKI03JOAbGMgUla7eoZtxU+ZvA9pSDMYBWC/sM/DUhJkPcQEhnyB1BZSVvuu1L36RlLNsXg==",
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "2.0.0",
-          "NimbleConfig.Core": "1.0.27"
-        }
-      },
       "NSwag.AspNetCore": {
         "type": "Direct",
         "requested": "[13.6.0, )",
@@ -1150,6 +1140,15 @@
           "Microsoft.CSharp": "4.5.0",
           "Microsoft.Extensions.Configuration": "2.0.0",
           "Microsoft.Extensions.Configuration.Binder": "2.0.0"
+        }
+      },
+      "NimbleConfig.DependencyInjection.Aspnetcore": {
+        "type": "Transitive",
+        "resolved": "1.0.27",
+        "contentHash": "mToV/IHF1ORhnUKyKI03JOAbGMgUla7eoZtxU+ZvA9pSDMYBWC/sM/DUhJkPcQEhnyB1BZSVvuu1L36RlLNsXg==",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "2.0.0",
+          "NimbleConfig.Core": "1.0.27"
         }
       },
       "NJsonSchema": {
@@ -2745,6 +2744,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.4",
           "Microsoft.Extensions.Hosting.Abstractions": "3.1.5",
           "NimbleConfig.Core": "1.0.27",
+          "NimbleConfig.DependencyInjection.Aspnetcore": "1.0.27",
           "NodaTime": "3.0.0",
           "Serilog": "2.10.0-dev-01187",
           "Serilog.AspNetCore": "3.4.0-dev-00171",

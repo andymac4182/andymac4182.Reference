@@ -4,6 +4,7 @@ using andymac4182.Reference.Service.Configure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NodaTime;
+using andymac4182.Reference.Infrastructure.Logging;
 
 namespace andymac4182.Reference.Service
 {
@@ -22,7 +23,7 @@ namespace andymac4182.Reference.Service
                 })
                 .UseCustomSerilog(thisAssembly)
                 .ConfigureServices((hostContext, services) => services
-                    .AddCustomConfigurationSettings()
+                    .AddCustomConfigurationSettings(Constants.ServiceAssembly)
                     .AddCustomMasstransit(thisAssembly)
                     .AddCustomPersistence()
                     .AddSingleton<IClock>(t => SystemClock.Instance)
