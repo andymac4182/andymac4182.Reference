@@ -6,6 +6,7 @@
     <Company>andymac4182</Company>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <LangVersion>latest</LangVersion>
+    <Features>strict</Features>
     <Version Condition="'$(Version)' == ''">1.0.0+aaaaa</Version>
     <RuntimeIdentifiers>win10-x64;linux-x64</RuntimeIdentifiers>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
